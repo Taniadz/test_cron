@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cron</title>
+</head>
+<body>
+{% block content %}
+<form action="{{ url_for("main") }}" method="post" >
+    {{ form.hidden_tag() }}
+    {{ form.account.label }}
+    {{ form.account }}
+    <p><input type="submit" value="Send"></p>
+
+</form>
+{% endblock %}
+</body>
+</html>

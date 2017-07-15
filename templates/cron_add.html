@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<form action="{{ url_for("cron_add", username=username) }}" method="post" >
+{{ form.csrf_token }}
+    {{ form.executable.label }}
+    {{ form.executable }}
+    </br>
+
+    {{ form.account.label }}
+  {{ form.account }}
+
+
+  {{ form.type }}
+
+
+    {{ form.minutes.label }}
+  {{ form.minutes }}
+
+    {{ form.hour.label }}
+  {{ form.hour }}
+
+    <p><input type="submit" value="Send"></p>
+
+</form>
+    or <a href="{{ url_for("cron_raw", username=username) }}">add raw </a>
+{% endblock %}
+</body>
+</html>

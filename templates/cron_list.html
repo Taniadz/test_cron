@@ -1,0 +1,8 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <a href="{{ url_for("cron_add", username=username) }}">Add new</a>
+    {% for job in jobs %}
+    <p>    {{ job }}</p>
+    {% endfor %}
+{% endblock %}
