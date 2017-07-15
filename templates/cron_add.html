@@ -1,30 +1,58 @@
-{% extends "main.html" %}
+{% extends "index.html" %}
 
 {% block content %}
 
-<form action="{{ url_for("cron_add", username=username) }}" method="post" >
-{{ form.csrf_token }}
-    {{ form.executable.label }}
-    {{ form.executable }}
-    </br>
-
-    {{ form.account.label }}
-  {{ form.account }}
+    <form action="{{ url_for("cron_add", username=username) }}" method="post" class="form-inline"  role="form">
+        {{ form.hidden_tag() }}
+     <div class="form-group">
 
 
-  {{ form.type }}
+        <div class="col-sm-6">
+            {{ form.executable(class_="form-control", placeholder="enter executable") }}
+        </div>
+     </div>
+    <div class="form-group">
 
+        <div class="col-sm-6">
+            {{ form.account (class_="form-control", placeholder="enter account")}}
+        </div>
+    </div>
+        <br>
 
-    {{ form.minutes.label }}
-  {{ form.minutes }}
+        <div class="radio">
+            {{ form.type }}
+        </div>
+        <br>
+    <div class="form-group">
+        <div class="col-sm-6">
+            {{ form.minutes (class_="form-control", placeholder="enter minutes") }}
+        </div>
+    </div>
+   <div class="form-group">
+        <div class="col-sm-6">
+            {{ form.hour (class_="form-control", placeholder="enter hour")}}
+        </div>
+   </div>
+        {% if form.errors %}
+            <ul class=errors>
+                {% for field, errors in form.errors.items(): %}
+                    {% for error in errors %}
+                      <li>Error in the field {{field}}:{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+   <br>
 
-    {{ form.hour.label }}
-  {{ form.hour }}
-
-    <p><input type="submit" value="Send"></p>
-
+   <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-8">
+            <button type="submit" class="btn btn-default">Send</button>
+        </div>
+    </div>
 </form>
-    or <a href="{{ url_for("cron_raw", username=username) }}">add raw </a>
+    <p class="bg-info">
+        or <a href="{{ url_for("cron_raw", username=username) }}">add raw </a>
+    </p>
 {% endblock %}
 </body>
 </html>

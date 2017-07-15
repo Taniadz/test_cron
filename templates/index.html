@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cron</title>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style/bootstrap.min.css') }}" class="form-horizontal" role="form">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        {%  block navbar  %}
+                <nav class="navbar navbar-default" role="navigation">
+              <div class="container-fluid">
+                  {% if username %}
+                    <a href="{{ url_for("cron_list", username=username) }} ">
+                        <button type="button" class="btn btn-default navbar-btn">Cron list</button>
+                    </a>
+
+                  {% endif %}
+              </div>
+            </nav>
+        {% endblock %}
+        {% block content %}
+
+        {% endblock %}
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

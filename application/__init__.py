@@ -2,8 +2,12 @@
 from flask import Flask
 
 import config
-
-app = Flask(__name__)
+import os
+app = Flask(__name__, static_folder='../static')
 app.config.from_object(config)
+
+
+
 app.template_folder = '../templates'
+app.config['STATIC_FOLDER'] = '../static'
 from application import views
